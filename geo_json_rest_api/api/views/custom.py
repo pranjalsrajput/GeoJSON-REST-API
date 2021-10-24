@@ -2,7 +2,6 @@ from django.shortcuts import render
 from django.http import HttpResponse
 import folium
 
-
 # Create your views here.
 
 # def say_hello(request):
@@ -10,6 +9,8 @@ import folium
 
 # def say_hello(request):
 #     return render(request, 'hello.html')
+from api.models import GeoFeature
+
 
 def create_map(data_path):
     geo_data_map = folium.Map(location=[-16.22, -71.59], zoom_start=2)
@@ -25,3 +26,9 @@ def visualize_geo_data(request):
     geo_data_map = create_map(data_path)
     context = {'geo_data_map': geo_data_map}
     return render(request, 'pages/home.html', context)
+
+
+def geofeature_list_view(request):
+    queryset = GeoFeature.objects.all()
+    context = {'object_list': queryset}
+    return render(request, 'pages/geofeatures.html', context)

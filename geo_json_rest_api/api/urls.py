@@ -30,7 +30,8 @@ urlpatterns = [
     path('admin/', admin.site.urls),
 
     # Custom actions
-    path('api/visualize_geodata/', visualize_geo_data)
+    path('api/visualize_geodata/', visualize_geo_data),
+    path('api/geofeature_list_view/', geofeature_list_view)
 ]
 
 urlpatterns.extend(router.urls)

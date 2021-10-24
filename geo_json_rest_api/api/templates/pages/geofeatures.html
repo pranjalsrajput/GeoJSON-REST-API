@@ -1,0 +1,14 @@
+{% extends 'pages/base.html' %}
+
+{% block title %}
+Show list of features
+{%  endblock title %}
+
+
+{% block content %}
+{{ object_list }}
+
+    {%  for instance in object_list %}
+        <p>{{ instance.id }} - {{ instance.name }}</p>
+    {% endfor %}
+{% endblock content %}
