@@ -53,7 +53,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'api.urls'
+ROOT_URLCONF = 'geo_json_rest_api.urls'
 
 TEMPLATES = [
     {
@@ -156,6 +156,12 @@ MEDIA_URL = '/media/'
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+LEAFLET_CONFIG = {
+    'DEFAULT_CENTER': (53.2194, 6.5665),
+    'DEFAULT_ZOOM': 5,
+
+}
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
