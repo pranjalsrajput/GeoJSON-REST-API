@@ -18,10 +18,8 @@ from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import path, include
 from rest_framework import routers
-
-# from api.views import *
-# from api.views.custom import *
 from api.views import GeoFeatureAPI
+from api.views.custom import *
 
 router = routers.DefaultRouter()
 
@@ -32,7 +30,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
 
     # Custom actions
-    # path('api/createNestObjectsForBatchProcess/', CreateNestObjectsForBatchProcess.as_view()),
+    path('api/visualize_geodata/', visualize_geo_data)
 ]
 
 urlpatterns.extend(router.urls)
