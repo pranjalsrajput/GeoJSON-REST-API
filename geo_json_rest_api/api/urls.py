@@ -20,6 +20,7 @@ from django.urls import path, include
 from rest_framework import routers
 from api.views import GeoFeatureAPI
 from api.views.custom import *
+from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
 
 router = routers.DefaultRouter()
 
@@ -28,10 +29,13 @@ router.register("api/feature", GeoFeatureAPI, "geofeature"),
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('api/token', TokenObtainPairView.as_view()),
+    path('api/token/refresh', TokenRefreshView.as_view()),
 
     # Custom actions
     path('api/visualize_geodata/', visualize_geo_data),
-    path('api/geofeature_list_view/', geofeature_list_view)
+    path('api/geofeature_list_view/', geofeature_list_view),
+    # path('api/edit_feature_object/', edit_feature_object)
 ]
 
 urlpatterns.extend(router.urls)

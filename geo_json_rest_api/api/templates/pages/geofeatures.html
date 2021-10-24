@@ -6,9 +6,20 @@ Show list of features
 
 
 {% block content %}
-{{ object_list }}
+{#{{ object_list }}#}
 
-    {%  for instance in object_list %}
-        <p>{{ instance.id }} - {{ instance.name }}</p>
-    {% endfor %}
+{#    {%  for instance in object_list %}#}
+{#        <p>{{ instance.id }} - {{ instance.name }}</p>#}
+{#    {% endfor %}#}
+
+    <form action="" method="POST" autocomplete="off">
+        {% csrf_token %}
+        {%  for instance in object_list %}
+            <p>{{ instance.id }} - {{ instance.name }} - Enter new  {{ form }}</p>
+            <button type="submit" class="btn btn-primary">change</button>
+        {% endfor %}
+
+
+
+    </form>
 {% endblock content %}

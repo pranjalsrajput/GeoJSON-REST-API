@@ -5,3 +5,4 @@ djangorestframework-gis
 geopandas
 psycopg2
 django-leaflet
+djangorestframework_simplejwt

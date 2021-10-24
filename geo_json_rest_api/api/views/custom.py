@@ -1,24 +1,15 @@
-from django.shortcuts import render
-from django.http import HttpResponse
-import folium
-
-# Create your views here.
-
-# def say_hello(request):
-#     return HttpResponse("Hello world")
+from django.shortcuts import render, get_object_or_404
 
 # def say_hello(request):
 #     return render(request, 'hello.html')
 from api.models import GeoFeature
+from api.templates.forms.geofeatures import GeoFeaturesForm
+from api.utils.maps import create_map
 
 
-def create_map(data_path):
-    geo_data_map = folium.Map(location=[-16.22, -71.59], zoom_start=2)
-    style = {'fillColor': '#228B22', 'color': '#228B22'}
-    folium.GeoJson(data_path, name='municipalities_nl', style_function=lambda x: style).add_to(geo_data_map)
-    folium.LayerControl().add_to(geo_data_map)
-    geo_data_map = geo_data_map._repr_html_()
-    return geo_data_map
+# Create your views here.
+# def say_hello(request):
+#     return HttpResponse("Hello world")
 
 
 def visualize_geo_data(request):
@@ -29,6 +20,29 @@ def visualize_geo_data(request):
 
 
 def geofeature_list_view(request):
-    queryset = GeoFeature.objects.all()
-    context = {'object_list': queryset}
+    queryset = GeoFeature.objects.all().order_by("id")
+    # queryset = get_object_or_404(GeoFeature,  id=1)
+    form = GeoFeaturesForm(request.POST or None)
+
+    if form.is_valid():
+        instance = form.save(commit=False) # We don't want to save form at this point
+        instance.name = form.cleaned_data.get('name') # Coming through the form
+        form.save()
+    context = {
+        'object_list': queryset,
+        'form': form
+    }
     return render(request, 'pages/geofeatures.html', context)
+
+
+# def edit_feature_object(request, pk):
+#     object = get_object_or_404(GeoFeature, pk)
+#     if request.method == 'POST':
+#         form = GeoFeaturesForm(instance=object, data=request.POST)
+#         if form.is_valid():
+#             form.save()
+#     context = {
+#         'object_list': object,
+#         'form': form
+#     }
+#     return render(request, 'pages/geofeatures.html', context)
