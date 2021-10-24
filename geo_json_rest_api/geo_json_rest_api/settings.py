@@ -36,9 +36,11 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.gis',
     'api',
     'rest_framework',
     'rest_framework_gis',
+    'leaflet'
 ]
 
 MIDDLEWARE = [
@@ -77,13 +79,23 @@ WSGI_APPLICATION = 'geo_json_rest_api.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
+        'ENGINE': 'django.contrib.gis.db.backends.postgis',
         'NAME': 'postgis_db',
         'USER': 'postgis_test',
         'PASSWORD': 'postgis_test',
         # 'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': 'postgis_db',
+#         'USER': 'postgis_test',
+#         'PASSWORD': 'postgis_test',
+#         # 'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+#     }
+# }
 
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
