@@ -16,25 +16,30 @@ Including another URLconf
 from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib import admin
-from django.urls import path, include
+from django.urls import path
 from rest_framework import routers
+from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView, TokenVerifyView
+
 from api.views import GeoFeatureAPI
 from api.views.custom import *
-from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
+from api.views.features import BoundingBoxFilter
 
 router = routers.DefaultRouter()
 
 # Basic rest API for all models
 router.register("api/feature", GeoFeatureAPI, "geofeature"),
+# router.register("api/boundingboxfilter", BoundingBoxFilter, "boundingboxfilter"),
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/token', TokenObtainPairView.as_view()),
     path('api/token/refresh', TokenRefreshView.as_view()),
+    path('api/token/verify', TokenVerifyView.as_view()),
 
     # Custom actions
-    path('api/visualize_geodata/', visualize_geo_data),
+    path('api/visualize_geo_data/', visualize_geo_data),
     path('api/geofeature_list_view/', geofeature_list_view),
+    path('api/boundingboxfilter/', BoundingBoxFilter.as_view()),
     # path('api/edit_feature_object/', edit_feature_object)
 ]
 

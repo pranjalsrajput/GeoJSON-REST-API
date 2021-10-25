@@ -3,6 +3,7 @@ from django.shortcuts import render, get_object_or_404
 # def say_hello(request):
 #     return render(request, 'hello.html')
 from api.models import GeoFeature
+from api.serializers.features import GeoFeatureSerializer
 from api.templates.forms.geofeatures import GeoFeaturesForm
 from api.utils.maps import create_map
 
@@ -34,15 +35,3 @@ def geofeature_list_view(request):
     }
     return render(request, 'pages/geofeatures.html', context)
 
-
-# def edit_feature_object(request, pk):
-#     object = get_object_or_404(GeoFeature, pk)
-#     if request.method == 'POST':
-#         form = GeoFeaturesForm(instance=object, data=request.POST)
-#         if form.is_valid():
-#             form.save()
-#     context = {
-#         'object_list': object,
-#         'form': form
-#     }
-#     return render(request, 'pages/geofeatures.html', context)
