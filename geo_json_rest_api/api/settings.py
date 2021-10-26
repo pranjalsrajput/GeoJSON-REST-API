@@ -83,7 +83,6 @@ DATABASES = {
         'NAME': 'postgis_db',
         'USER': 'postgis_test',
         'PASSWORD': 'postgis_test',
-        # 'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
 

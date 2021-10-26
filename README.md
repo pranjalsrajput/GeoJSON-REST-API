@@ -11,12 +11,24 @@ Postgres Database (12.8)
 Django (3.2.6)
 
 Install database using following command: `sudo apt install postgresql postgresql-contrib python3-dev libpq-dev`
-
-Create user and database to test the application
 ```
 sudo -i -u postgres
 createuser
 createdb
+```
+
+Create user `postgis_test` with password `postgis_test`. Create database name `postgis_db` to test the application. Or alternatively, change the database credentials in `api/setting.py`
+
+```
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.contrib.gis.db.backends.postgis',
+        'NAME': 'postgis_db',
+        'USER': 'postgis_test',
+        'PASSWORD': 'postgis_test',
+    }
+}
+
 ```
 
 
