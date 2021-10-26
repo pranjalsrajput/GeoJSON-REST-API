@@ -1,18 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
-{#{% load leaflet_tags %}#}
-<head>
-{#    {% leaflet_js %}#}
-{#    {% leaflet_css %}#}
-    <meta charset="UTF-8">
-    <title>Municipality NL GeoData Map</title>
-    <style type="text/css">
-        #gis {width: 100%; height:900px }
-    </style>
-</head>
-<body>
-<br>
-{{ geo_data_map|safe }}
-{#{% leaflet_map "gis" %}#}
-</body>
-</html>
+{% extends 'pages/baseLayout.html' %}
+
+{% block title %}
+    Municipality NL GeoData Map
+{% endblock title %}
+
+{% block heading %}
+    Geofeatures Map
+{% endblock heading %}
+
+{% block content %}
+    {{ geo_data_map|safe }}
+{% endblock content %}

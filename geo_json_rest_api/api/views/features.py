@@ -7,7 +7,7 @@ from api.serializers.features import GeoFeatureSerializer
 
 
 class GeoFeatureAPI(viewsets.ModelViewSet):
-    permission_classes = [permissions.AllowAny]
+    # permission_classes = [permissions.AllowAny]
     queryset = GeoFeature.objects.all()
     serializer_class = GeoFeatureSerializer
 

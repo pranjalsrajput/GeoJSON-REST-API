@@ -1,0 +1,55 @@
+{% load static %}
+<!doctype html>
+<html>
+<head>
+
+    <meta charset='utf-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <title>GeoFeatures | {% block title %}{% endblock title %}</title>
+    <link href="{% static '/styles/bootstrap/css/bootstrap.min.css' %}" rel='stylesheet'>
+    <link href="{% static '/styles/bootstrap/css/style.css' %}" rel='stylesheet'>
+    <script type='text/javascript' src="{% static '/styles/jquery/jquery.min.js' %}"></script>
+</head>
+<body oncontextmenu='return false' class='snippet-body'>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/bbbootstrap/libraries@main/jquery.tabledit.js"></script>
+<script type='text/javascript' src="{% static '/styles/jquery/jquery.tabledit.js' %}"></script>
+<div class="container mt-100">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header">
+                    <h5>
+                        {% block heading %}
+                        {% endblock heading %}
+                    </h5>
+                    <span>
+                        {% block description %}
+                        {% endblock description %}
+                    </span>
+                </div>
+                <div class="card-block">
+                    {% block content %}
+                    {% endblock content %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script type='text/javascript' src="{% static '/styles/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+<script type='text/javascript'>$(document).ready(function () {
+    $('#example-1').Tabledit({
+        editButton: false,
+        deleteButton: false,
+        hideIdentifier: true,
+        columns: {
+            identifier: [0, 'id'],
+            editable: [[2, 'name']]
+        }
+    });
+
+});</script>
+
+{% block customScript %}
+{% endblock customScript %}
+</body>
+</html>

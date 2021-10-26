@@ -28,7 +28,6 @@ router = routers.DefaultRouter()
 
 # Basic rest API for all models
 router.register("api/feature", GeoFeatureAPI, "geofeature"),
-# router.register("api/boundingboxfilter", BoundingBoxFilter, "boundingboxfilter"),
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -40,7 +39,7 @@ urlpatterns = [
     path('api/visualize_geo_data/', visualize_geo_data),
     path('api/geofeature_list_view/', geofeature_list_view),
     path('api/boundingboxfilter/', BoundingBoxFilter.as_view()),
-    # path('api/edit_feature_object/', edit_feature_object)
+    path('api/geofeature_list_view/updateFeatures/', UpdateFeatures.as_view()),
 ]
 
 urlpatterns.extend(router.urls)
