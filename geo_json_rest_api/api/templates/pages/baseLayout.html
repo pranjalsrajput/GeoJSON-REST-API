@@ -1,3 +1,5 @@
+<!-- This is the base html file that will be used as the base layout in all the html files. It contains the base
+structure and basic styles that will be commonly used in other html files in the application. -->
 {% load static %}
 <!doctype html>
 <html>
@@ -19,15 +21,18 @@
             <div class="card">
                 <div class="card-header">
                     <h5>
+                    <!-- Write the heading of the page here -->
                         {% block heading %}
                         {% endblock heading %}
                     </h5>
+                    <!-- Write the description here -->
                     <span>
                         {% block description %}
                         {% endblock description %}
                     </span>
                 </div>
                 <div class="card-block">
+                <!-- Add content here -->
                     {% block content %}
                     {% endblock content %}
                 </div>
@@ -49,6 +54,7 @@
 
 });</script>
 
+<!-- Add the custom javascript here -->
 {% block customScript %}
 {% endblock customScript %}
 </body>

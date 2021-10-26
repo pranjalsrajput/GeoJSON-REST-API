@@ -1,5 +1,7 @@
+"""This file contains the api views for feature model.
+"""
 from django.contrib.gis.geos import Point
-from rest_framework import permissions, viewsets, generics
+from rest_framework import viewsets, generics
 from rest_framework.response import Response
 
 from api.models import *

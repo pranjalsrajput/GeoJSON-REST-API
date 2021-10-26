@@ -26,7 +26,7 @@
             </thead>
             <tbody>
             {% for instance in object_list %}
-                <tr id="{{ instance.id }}">
+                <tr>
                     <th scope="row" style="display: none;">{{ instance.id }}</th>
                     <td><span class="tabledit-span">{{ instance.id }}</span></td>
                     <td class="tabledit-view-mode" style="cursor: pointer;">
@@ -34,7 +34,6 @@
                         <input class="tabledit-input form-control input-sm" type="text" id="post-name"
                                name="First Name" value="" style="display: none;" disabled="">
                     </td>
-                    {#                        <td> {{ form.name }}</td>#}
                     <td>
                         <button class="btn-primary btn" type="submit" id="updateBtn">Change</button>
                     </td>
@@ -48,12 +47,9 @@
 {% endblock content %}
 
 {% block customScript %}
-    // Submit post on submit
-
     <script type="text/javascript">
         // AJAX for posting
         function create_post(row_id, row_val) {
-            console.log("create post is working!") // sanity check
             $.ajax({
                 url: "updateFeatures/", // the endpoint
                 type: "POST", // http method
@@ -61,15 +57,14 @@
 
                 // handle a successful response
                 success: function (json) {
-                    console.log(json); // log the returned json to the console
-                    console.log("success"); // another sanity check
+                    console.log("success");
+                    alert("Record updated!")
                 },
 
                 // handle a non-successful response
                 error: function (xhr, errmsg, err) {
                     console.log("error");
                     alert("Oops! We have encountered an error")
-                    console.log(xhr.status + ": " + xhr.responseText); // provide a bit more info about the error to the console
                 }
             });
         };
@@ -78,8 +73,8 @@
         $('#updateBtn').click(function () {
             var row = $(this).closest('td');
             var col = row.parent().children();
-            var row_id = col[1].innerText;
-            var row_val = col[2].innerText;
+            var row_id = col[1].innerText; // Get the id of the record
+            var row_val = col[2].innerText; // Get the changed value of the field
             create_post(row_id, row_val)
         });
 
