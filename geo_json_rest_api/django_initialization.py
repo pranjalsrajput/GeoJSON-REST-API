@@ -10,5 +10,5 @@ def start_django():
     except FileNotFoundError:
         print("No .env file")
 
-    os.environ.setdefault("DJANGO_SETTINGS_MODULE", "geo_json_rest_api.settings")
+    os.environ.setdefault("DJANGO_SETTINGS_MODULE", "api.settings")
     django.setup()
