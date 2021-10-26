@@ -1,1 +1,1 @@
-from api.views.features import GeoFeatureAPI
+from api.views.geofeatures import GeoFeatureAPI

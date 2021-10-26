@@ -22,7 +22,7 @@ from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
 
 from api.views import GeoFeatureAPI
 from api.views.custom import *
-from api.views.features import BoundingBoxFilter
+from api.views.geofeatures import BoundingBoxFilter
 
 router = routers.DefaultRouter()
 

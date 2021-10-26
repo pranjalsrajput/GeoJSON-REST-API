@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from api.models.features import *
+from api.models.geofeatures import *
 from leaflet.admin import LeafletGeoAdmin
 
 
